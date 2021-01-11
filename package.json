@@ -1,5 +1,5 @@
 {
-	"name": "electron-esm-webpack",
+	"name": "editor",
 	"main": "./main",
 	"scripts": {
 		"build": "webpack --progress",
