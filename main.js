@@ -30,11 +30,23 @@ const template = [
 	{
 		label: 'File',
 		submenu: [
-			{ label: 'New' },
-			{ label: 'Open' },
+			{
+				label: 'New',
+				accelerator: 'CmdOrCtrl+n',
+			},
+			{
+				label: 'Open',
+				accelerator: 'CmdOrCtrl+o',
+			},
 			{ type: 'separator' },
-			{ label: 'Save' },
-			{ label: 'Save As' },
+			{
+				label: 'Save',
+				accelerator: 'CmdOrCtrl+s',
+			},
+			{
+				label: 'Save As',
+				accelerator: 'CmdOrCtrl+Shift+s'
+			},
 			{ type: 'separator' },
 			{
 				'label': 'Open Recent',
@@ -113,9 +125,18 @@ const template = [
 	{
 		label: 'Process',
 		submenu: [
-			{ label: 'Web Package' },
-			{ label: 'epub' },
-			{ label: 'zip' }
+			{
+				label: 'Web Package',
+				accelerator: 'CmdOrCtrl+Alt+Shift+w',
+			},
+			{
+				label: 'epub',
+				accelerator: 'CmdOrCtrl+Alt+Shift+e'
+			},
+			{
+				label: 'zip',
+				accelerator: 'CmdOrCtrl+Alt+Shift+z'
+			}
 		]
 	},
 
