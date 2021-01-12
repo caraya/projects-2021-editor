@@ -1,4 +1,13 @@
-const { app, BrowserWindow, Menu } = require('electron');
+const { 
+	app, 
+	BrowserWindow, 
+	Menu,
+	dialog,
+	ipcMain,
+} = require('electron');
+const {
+	readFileSync
+} = require('fs');
 const isMac = process.platform === 'darwin'
 
 const template = [
@@ -128,10 +137,38 @@ const menu = Menu.buildFromTemplate(template)
 
 let mainWindow;
 
+const getFile = getFileFromUser = () => {
+	dialog.showOpenDialog(mainWindow, {
+		properties: [
+			'openFile',
+		],
+	}).then(result => {
+		console.log(result.canceled);
+		console.log(result.filePaths);
+
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+const putFile = saveFileFromUser = () => {
+	dialog.showSaveDialog(mainWindow, {
+		properties: [
+			'createDirectory',
+			'showOverwriteConfirmation'
+		]
+	}).then(result => {
+		console.log(result.canceled)
+		console.log(result.filePaths)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
 function createWindow() {
 	mainWindow = new BrowserWindow({
-		width: 800,
-		height: 600,
+		width: 1600,
+		height: 1200,
 		webPreferences: { worldSafeExecuteJavaScript: true }
 	});
 
@@ -147,6 +184,7 @@ function createWindow() {
 app.on('ready', () => {
 	Menu.setApplicationMenu(menu);
 	createWindow();
+	getFile();
 });
 
 app.on('window-all-closed', function () {
@@ -159,4 +197,4 @@ app.on('activate', function () {
 	if (mainWindow === null) {
 		createWindow();
 	}
-});
+})
