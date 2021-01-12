@@ -5,9 +5,7 @@ const {
 	dialog,
 	ipcMain,
 } = require('electron');
-const {
-	readFileSync
-} = require('fs');
+const fs = require('fs');
 const isMac = process.platform === 'darwin'
 
 const template = [
@@ -166,13 +164,16 @@ const getFile = getFileFromUser = () => {
 	}).then(result => {
 		console.log(result.canceled);
 		console.log(result.filePaths);
-
+		file = result.filePaths[0]
+		console.log(file)
+		content = fs.readFileSync(file).toString()
+		console.log(content)
 	}).catch(err => {
 		console.log(err)
 	})
 }
 
-const putFile = saveFileFromUser = () => {
+const putFile = saveFileForUser = () => {
 	dialog.showSaveDialog(mainWindow, {
 		properties: [
 			'createDirectory',
