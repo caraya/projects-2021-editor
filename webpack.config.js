@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
 	mode: "development",
 	entry: {
-		app: './index.js',
+		app: './renderer.js',
 		'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
 		'json.worker': 'monaco-editor/esm/vs/language/json/json.worker',
 		'css.worker': 'monaco-editor/esm/vs/language/css/css.worker',
